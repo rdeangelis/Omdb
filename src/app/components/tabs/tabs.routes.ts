@@ -1,5 +1,9 @@
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
+import { TabMoviesComponent } from '../tab-movies/tab-movies.component';
+import { TabSeriesComponent } from '../tab-series/tab-series.component';
+import { TabComponent } from '../tab/tab.component';
 
 export const routes: Routes = [
   {
@@ -8,20 +12,33 @@ export const routes: Routes = [
     children: [
       {
         path: 'tab-movies',
-        loadComponent: () => 
-          import('../tab-movies/tab-movies.component').then((m) => m.TabMoviesComponent),
+        component: TabComponent,
         children: [
           {
-            path: ':id',
-            loadComponent: () => 
-              import('../movie-detail/movie-detail.component').then((m) => m.MovieDetailComponent),
+            path: '',
+            component: TabMoviesComponent,
+            pathMatch: 'full',
+          },
+          {
+            path: 'movie-detail/:id',
+            component: MovieDetailComponent
           }
         ]
       },
       {
         path: 'tab-series',
-        loadComponent: () =>
-          import('../tab-series/tab-series.component').then((m) => m.TabSeriesComponent),
+        component: TabComponent,
+        children: [
+          {
+            path: '',
+            component: TabSeriesComponent,
+            pathMatch: 'full',
+          },
+          {
+            path: 'movie-detail/:id',
+            component: MovieDetailComponent
+          }
+        ]
       },
       {
         path: '',

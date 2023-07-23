@@ -27,6 +27,15 @@ export class OmdbService {
     )
   }
 
+  getMovieDetails(id: string): Observable<MovieModel[]> {
+    const url = `${environment.apiUrl}&${id}`;
+
+    return this.httpClient.post<any>(url, id)
+    .pipe(
+      map((risp: any) => { console.log(risp); return risp })
+    )
+  }
+
   getMovieList = this.movieList.asObservable();
 
   setMovies(movieList: MovieModel[]) {

@@ -5,6 +5,7 @@ import { MovieModel } from '../../model/movie.model';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { OmdbService } from '../../services/omdb.service';
 import { Router } from '@angular/router';
+import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
 
 @Component({
   selector: 'app-movie-list',
@@ -20,7 +21,6 @@ export class MovieListComponent  implements OnInit {
   @Input() movieList!: MovieModel[];
     
   constructor(
-    private omdbService: OmdbService,
     private router: Router
   ) 
   { }
@@ -29,6 +29,6 @@ export class MovieListComponent  implements OnInit {
   { }
 
   viewDetail(imdbID: string) {
-    this.router.navigate(['', {id: imdbID}]);
+    this.router.navigate(['tabs', 'tab-movies', 'movie-detail', imdbID]);
   }
 }
