@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">omdb</string>
+    <string name="title_activity_main">omdb</string>
+    <string name="package_name">omdb.it</string>
+    <string name="custom_url_scheme">omdb.it</string>
+</resources>
